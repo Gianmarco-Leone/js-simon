@@ -1,0 +1,25 @@
+:root {
+    --color-text: aqua;
+}
+
+body {
+    background-color: aqua;
+    font-family: 'Poppins', sans-serif;
+}
+
+.container {
+    width: 400px;
+    margin: 100px auto;
+}
+
+.col-auto .card {
+    background-color: coral;
+}
+
+.col-auto .card h1 {
+    color: var(--color-text);
+}
+
+.counter-content .counter * {
+    color: var(--color-text);
+}
