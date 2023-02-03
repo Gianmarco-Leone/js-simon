@@ -1,43 +1,51 @@
 // TRACCIA:
-
 // Sfruttiamo le timing functions per fare il conto alla rovescia per la correzione di domani!
-
 // Ogni secondo il nostro countdown dovrà scalare fino alle 9: 30 di domani mattina!
+
 
 // SVOLGIMENTO:
 
-let messageEl = document.getElementById("output_message");
 // Creare data fine countdown (quanto tempo sarà passato fino al giorno n)
+const countDownDay = new Date("Feb 06, 2023 09:30:00").getTime();
 
-const countDownDay = new Date("Feb 04, 2023 09:30:00").getTime();
-// console.log(countDownDay);
+const countDownTime = setInterval(generateCountDown, 1000);
 
-let countDownTime = setInterval(function () {
-    // Funzione per decrementare countdown ogni secondo
+
+
+
+/** 
+ * Funzione che data la costante del giorno dal quale vogliamo fare il conto alla rovescia, calcolerà la differenza da quest'ultimo a oggi, calcolando secondi, minuti, ore e giorni
+ * 
+ */
+
+function generateCountDown() {
+
     const now = new Date().getTime();
-    // console.log(now);
 
     let countDown = countDownDay - now;
-    // console.log("Millisecondi rimanenti al giorno n " + countDown);
 
     // Calcola secondi
-    const seconds = Math.floor((countDown % (1000 * 60)) / 1000);
-    // console.log("Secondi rimanenti al minuto successivo o alla fine del countdown: " + seconds);
+    let seconds = Math.floor((countDown % (1000 * 60)) / 1000);
+    seconds = (seconds < 10) ? "0" + seconds : seconds;
 
     // Calcola minuti
-    const minutes = Math.floor((countDown % (1000 * 60 * 60)) / (1000 * 60));
-    // console.log("Minuti rimanenti all'ora successiva o alla fine del countdown: " + minutes);
+    let minutes = Math.floor((countDown % (1000 * 60 * 60)) / (1000 * 60));
+    minutes = (minutes < 10) ? "0" + minutes : minutes;
 
     // Calcola ore
-    const hours = Math.floor((countDown % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    // console.log("Ore rimanenti al giorno successivo o alla fine del countdown: " + hours);
+    let hours = Math.floor((countDown % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    hours = (hours < 10) ? "0" + hours : hours;
 
     // Calcola giorno
-    const days = Math.floor((countDown / (1000 * 60 * 60 * 24)));
-    // console.log("Giorni rimanenti alla fine del countdown: " + days);
+    let days = Math.floor((countDown / (1000 * 60 * 60 * 24)));
+    days = (days < 10) ? "0" + days : days;
 
+    let messageEl = document.getElementById("output_message");
     messageEl.innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s";
-}, 1000);
 
-
-// SE distanza < 0 fine countdown
+    // SE distanza < 0 fine countdown
+    if (countDown <= 0) {
+        clearInterval(countDownTime);
+        messageEl.innerHTML = "INIZIA LA CORREZIONE!";
+    }
+}
