@@ -2,11 +2,11 @@
 GENERICS
 *********/
 :root {
-    --color-text: aqua;
+    --color-text: rgb(0, 0, 0);
 }
 
 body {
-    background-color: aqua;
+    background-color: #111;
     font-family: 'Poppins', sans-serif;
 }
 
@@ -16,12 +16,13 @@ body {
 }
 
 .col-auto .card {
-    background-color: coral;
+    background-color: rgb(213, 255, 1);
     animation: scale 6s infinite linear;
 }
 
 .col-auto .card h1 {
     color: var(--color-text);
+    font-family: 'Luckiest Guy', cursive;
 }
 
 .counter-content .counter * {
