@@ -11,8 +11,6 @@ const countDownDay = new Date("Feb 06, 2023 09:30:00").getTime();
 const countDownTime = setInterval(generateCountDown, 1000);
 
 
-
-
 /** 
  * Funzione che data la costante del giorno dal quale vogliamo fare il conto alla rovescia, calcolerà la differenza da quest'ultimo a oggi, calcolando secondi, minuti, ore e giorni
  * 
@@ -61,3 +59,5 @@ function generateCountDown() {
         });
     }
 }
+
+generateCountDown(); 
